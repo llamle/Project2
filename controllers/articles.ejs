@@ -5,11 +5,11 @@ var express = require('express'),
 
 // INDEX
 router.get('/', function (req, res) {
-  Post.find({}, function (err, articlesArray) {
+  Article.find({}, function (err, articlesArray) {
     if (err) {
       console.log(err);
     } else {
-      res.render('posts/index', { articles: articlesArray });
+      res.render('articles/index', { articles: articlesArray });
     };
   });
 });
