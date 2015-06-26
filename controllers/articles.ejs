@@ -1,8 +1,7 @@
 var express = require('express'),
-    router = express.Router(),
-    Article = require('../models/article.js');
-
-// remember, every route has /posts before it in here...
+    router  = express.Router(),
+    Article = require('../models/article.js').Article;
+    Section = require('../models/article.js').Section;
 
 // INDEX
 router.get('/', function (req, res) {

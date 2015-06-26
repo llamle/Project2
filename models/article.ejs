@@ -12,6 +12,10 @@ var articleSchema = Schema({
   content: [contentSchema]
 });
 
-var Article = mongoose.model("Article", articleSchema);
+var Section = mongoose.model('Section', sectionSchema)
+var Article = mongoose.model('Article', articleSchema);
 
-module.exports = Article;
+module.exports = {
+  Section : Section,
+  Article : Article
+};
