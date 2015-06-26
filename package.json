@@ -1,0 +1,20 @@
+{
+  "name": "project_two",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.13.1",
+    "ejs": "^2.3.1",
+    "express": "^4.13.0",
+    "method-override": "^2.3.3",
+    "mongodb": "^2.0.35",
+    "mongoose": "^4.0.6"
+  }
+}
