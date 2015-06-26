@@ -1,15 +1,15 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var contentSchema = Schema({
+var sectionSchema = Schema({
   title: String,
-  sections: String
+  content: String
 });
 
 var articleSchema = Schema({
   author: String,
   title: String,
-  content: [contentSchema]
+  content: [sectionSchema]
 });
 
 var Section = mongoose.model('Section', sectionSchema)
