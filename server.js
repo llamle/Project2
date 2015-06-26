@@ -1,27 +1,40 @@
-var express        = require('express'),
-    app            = express(),
-    ejs            = require('ejs'),
-    expressLayouts = require('express-ejs-layouts')
+var express = require('express'),
+    server = express(),
+    ejs = require('ejs'),
+    bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
-    bodyParser     = require('body-parser'),
-    MongoClient    = require('mongodb').MongoClient,
-    ObjectId       = require('mongodb').ObjectId,
-    url            = 'mongodb://localhost:27017/wiki',
-    mongoose       = require('mongoose'),
-    Schema         = mongoose.Schema;
+    expressLayouts = require('express-ejs-layouts'),
+    morgan = require('morgan'),
+    mongoose = require('mongoose');
 
-app.set('view engine', 'ejs');
-app.set('views', './views');
+server.set('views', './views');
+server.set('view engine', 'ejs');
 
-app.use(express.static('./public'));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(methodOverride('_method'));
+server.use(morgan('short'));
+server.use(express.static("./public"));
 
-mongoose.connect(url);
+server.use(expressLayouts);
+
+server.use(bodyParser.urlencoded({ extended: true }));
+server.use(methodOverride('_method'));
+
+var articlesController = require('./controllers/articles.js');
+server.use('/articles', articlesController);
+
+server.get('/', function (req, res) {
+  res.render('welcome');
+});
+
+mongoose.connect('mongodb://localhost:27017/blogger');
 var db = mongoose.connection;
 
+db.on('error', function () {
+  console.log("Database errors!");
+});
+
 db.once('open', function () {
-  app.listen(3000, function () {
-    console.log('Listening on port 3000');
+  console.log("Database UP AND RUNNING!");
+  server.listen(3000, function () {
+    console.log("Server UP AND RUNNING!");
   });
 });

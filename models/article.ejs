@@ -1,0 +1,17 @@
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
+
+var contentSchema = Schema({
+  title: String,
+  sections: String
+});
+
+var articleSchema = Schema({
+  author: String,
+  title: String,
+  content: [contentSchema]
+});
+
+var Article = mongoose.model("Article", articleSchema);
+
+module.exports = Article;
