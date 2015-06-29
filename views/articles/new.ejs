@@ -1,0 +1,27 @@
+<div class="">
+
+<h1>New Article:</h1><br/>
+
+<form class="newForm" action="index.html" method="post">
+  <label for="author">Author:</label>
+  <input type="text" name="article[author]" id="author" size="30" placeholder="First and Last name"><br/>
+
+  <label for="title">Article Title:</label>
+  <input type="text" name="article[title]" id="title" size="30" placeholder="What's your article about?"><br/>
+
+  <fieldset>
+
+     <label for="section0">Section Title:<br/></label>
+     <input id="section0" type="text" name="article[content][0][title]" size="30" placeholder="What's this section about?"><br/>
+
+     <label for="content0">Section Content:<br/></label>
+     <textarea id="content0" name="article[content][0][content]" rows="8" cols="40" placeholder="Tell me something cool!"></textarea><br/>
+
+  </fieldset>
+
+  <button type="submit" name="button">Submit</button>
+  <input id="new-section" type="submit" value="Add a section">
+
+</form>
+<script src="/scripts/newArticle.js" type="text/javascript"></script>
+</div>

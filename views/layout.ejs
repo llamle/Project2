@@ -3,27 +3,29 @@
   <head>
     <meta charset="utf-8">
     <title>Leon's Wiki</title>
+    <link rel="stylesheet" href="/stylesheets/normalize.css">
+    <link rel="stylesheet" href="/stylesheets/skeleton.css">
     <link rel="stylesheet" href="/stylesheets/app.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   </head>
   <body>
     <header>
-      <ul>
+      <ul id="header">
         <li><h1>Leon's Wiki</h1></li>
-        <li>Home</li>
-        <li>Favorites</li>
-        <li>Random Article</li>
+          <li><h5>Home</h5></li>
+          <li><h5>Favorites</h5></li>
+          <li><h5>Random Article</h5></li>
       </ul>
     </header>
-    <nav>
-      <ul>
-        <li><h1>Article List</h1></li>
-        <% article.forEach(function (article) {%>
-          <li><a href="/wiki/<%= article._id %>"><%= article.title%> by <%= article.author%></a></li>
-        <% })%>
-      </ul>
-    </nav>
-    <%- body %>
+    <div id="navBody">
+      <nav>
+        <ul id="nav">
+          <li><h1>Article List</h1></li>
+
+        </ul>
+      </nav>
+      <%- body %>
+    </div>
   </body>
   <footer></footer>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </html>

@@ -33,7 +33,7 @@ router.post('/', function (req, res) {
 
 // SHOW
 router.get('/:id', function (req, res) {
-  Article.findById(req.params.id function(err, article) {
+  Article.findById(req.params.id, function(err, article) {
       if (err) {
       console.log(err);
     } else {
