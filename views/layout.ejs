@@ -15,7 +15,12 @@
       </ul>
     </header>
     <nav>
-
+      <ul>
+        <li><h1>Article List</h1></li>
+        <% article.forEach(function (article) {%>
+          <li><a href="/wiki/<%= article._id %>"><%= article.title%> by <%= article.author%></a></li>
+        <% })%>
+      </ul>
     </nav>
     <%- body %>
   </body>

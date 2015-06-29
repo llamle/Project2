@@ -25,7 +25,7 @@ server.get('/', function (req, res) {
   res.render('index');
 });
 
-mongoose.connect('mongodb://localhost:27017/blogger');
+mongoose.connect('mongodb://localhost:27017/wiki');
 var db = mongoose.connection;
 
 db.on('error', function () {

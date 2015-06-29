@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-
-  </body>
-</html>
+<h1><%= article.title %></h1>
+<p>By <%= article.author %></p>
+<a href="/articles/<%= article._id %>/edit">Edit</a>
+<% for(var i = 0; i < article.content.length; i++) { %>
+  <h2><%= article.content[i].title %></h2>
+  <p><%= article.content[i].content %></p>
+<% } %>
