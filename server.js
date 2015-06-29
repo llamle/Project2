@@ -1,11 +1,11 @@
-var express = require('express'),
-    server = express(),
-    ejs = require('ejs'),
-    bodyParser = require('body-parser'),
+var express        = require('express'),
+    server         = express(),
+    ejs            = require('ejs'),
+    bodyParser     = require('body-parser'),
     methodOverride = require('method-override'),
     expressLayouts = require('express-ejs-layouts'),
-    morgan = require('morgan'),
-    mongoose = require('mongoose');
+    morgan         = require('morgan'),
+    mongoose       = require('mongoose');
 
 server.set('views', './views');
 server.set('view engine', 'ejs');
