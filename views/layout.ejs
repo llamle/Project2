@@ -20,19 +20,21 @@
       <li><h1 id="header">Leon's Wiki</h1></li>
     </header>
     <div id="navBody">
-      <nav>
-        <ul id="nav">
+      <nav id="nav">
+        <ul>
           <li><h4 id="articlesList">Article List:</h4></li>
 
           <h6 id="articlesList">These are some of our articles:</h6>
 
           <% articles.forEach(function (article) {%>
-            <li><a href="/articles/<%= article._id %>"><%= article.title%> by <%= article.author%></a></li>
+            <li><a href="/articles/<%= article._id %>"><%= article.title%></a> by <%= article.author%></li><br/>
           <% })%>
 
         </ul>
       </nav>
-      <%- body %>
+      <div class="bodyDiv">
+        <%- body %>
+      </div>
     </div>
   </body>
   <footer></footer>

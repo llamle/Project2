@@ -4,11 +4,18 @@ var express        = require('express'),
     bodyParser     = require('body-parser'),
     methodOverride = require('method-override'),
     expressLayouts = require('express-ejs-layouts'),
+    session        = require('express-session')
     morgan         = require('morgan'),
     mongoose       = require('mongoose');
 
 server.set('views', './views');
 server.set('view engine', 'ejs');
+
+server.use(session({
+  secret: 'Leon Lamle',
+  resave: false,
+  saveUninitialized: false
+}));
 
 server.use(morgan('short'));
 server.use(express.static("./public"));

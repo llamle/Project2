@@ -3,27 +3,27 @@ var express = require('express'),
     Article = require('../models/article.js').Article;
     Section = require('../models/article.js').Section;
 
-// INDEX
-router.get('/', function (req, res) {
+// prefetch articles middleware
+
+router.use(function (req, res, next) {
   Article.find({}, function (err, articlesArray) {
     if (err) {
       console.log(err);
     } else {
-      res.render('articles/index', { articles: articlesArray });
+      res.locals.articles = articlesArray;
+      next();
     };
   });
+})
+
+// INDEX
+router.get('/', function (req, res) {
+  res.render('articles/index');
 });
 
 // NEW
 router.get('/new', function (req, res) {
-  Article.find({}, function(err, foundArticles) {
-  if (err) {
-    console.log(err);
-  }else {
-    console.log(foundArticles);
-  res.render('articles/new', {articles : foundArticles});
-    };
-  });
+  res.render('articles/new');
 });
 
 // CREATE
@@ -44,19 +44,32 @@ router.get('/:id', function (req, res) {
       if (err) {
       console.log(err);
     } else {
-      res.render('show.ejs', {article : article});
+      res.render('articles/show', {article : article});
     };
+  });
+});
+
+// DELETE Content request to "/articles/section/:id"
+router.delete('/:id/section/:sectionId', function (req, res) {
+  console.log(req.params);
+
+  Article.findById(req.params.id, function (err, article) {
+    article.content.remove(req.params.sectionId);
+
+    res.json({
+      success: true,
+      message: "Section has been removed!"
+    });
   });
 });
 
 // DELETE
 router.delete('/:id', function (req, res) {
-  var id = new ObjectId(req.params.id);
-  Article.remove({_id : id}, function(err, result){
+  Article.remove({_id : req.params.id}, function(err, result){
     if (err) {
       console.log(err);
     } else {
-      res.redirect(301, 'articles/index');
+      res.redirect(301, '');
     };
   });
 });
@@ -67,15 +80,14 @@ router.get('/:id/edit', function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.render('edit.ejs', {article : article});
+      res.render('articles/edit', {article : article});
     };
   });
 });
 
 // UPDATE
 router.patch('/:id', function (req, res) {
-  var id = new ObjectId(req.params.id);
-  Article.update({_id : id}, req.body.article, function(err, result){
+  Article.update({_id : req.params.id}, req.body.article, function(err, result){
     if (err) {
       console.log(err);
     } else {
@@ -84,6 +96,9 @@ router.patch('/:id', function (req, res) {
   });
 });
 
-
+// 404
+router.get('/*', function (req, res) {
+  res.render('articles/404', { path : req.path });
+});
 
 module.exports = router;

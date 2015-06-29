@@ -1,7 +1,15 @@
-<h1><%= article.title %></h1>
-<p>By <%= article.author %></p>
-<a href="/articles/<%= article._id %>/edit">Edit</a>
-<% for(var i = 0; i < article.content.length; i++) { %>
-  <h2><%= article.content[i].title %></h2>
-  <p><%= article.content[i].content %></p>
-<% } %>
+<div class="">
+
+<ul>
+  <br/>
+  <li><h2><%= article.title %></h2></li>
+  <li>By <%= article.author %></li>
+  <a href="/articles/<%= article._id %>/edit">Edit</a><br/><br/>
+
+  <% for(var i = 0; i < article.content.length; i++) { %>
+  <li><h4 id="showTitle"><%= article.content[i].title %></h4></li>
+  <li><p id="showParagraph"><%= article.content[i].content %></p></li>
+  <% } %>
+
+</ul>
+</div>

@@ -1,0 +1,37 @@
+<div class="">
+
+<h1>Edit Article:</h1><br/>
+
+<form action="/articles/<%= article._id%>?_method=DELETE" method="post">
+    <input type="submit" value="Delete Article">
+</form>
+
+<form class="newForm" action="/articles" method="post">
+  <label for="author">Author:</label>
+  <input type="text" name="article[author]" id="author" size="30" value="<%= article.author %>"><br/>
+
+  <label for="title">Article Title:</label>
+  <input type="text" name="article[title]" id="title" size="30" value="<%= article.title %>"><br/>
+
+  <% for(var i = 0; i < article.content.length; i++) { %>
+
+  <fieldset>
+
+     <label for="section-<%= i %>">Section Title:<br/></label>
+     <input id="section-<%= i %>" type="text" name="article[content][<%= i %>][title]" size="30" value="<%= article.content[i].title %>"><br/>
+
+     <label for="content-<%= i %>">Section Content:</label><br/>
+     <button id="removeSection-<%= i %>" class="delete-section" data-section-id="<%= article.content[i]._id %>" name="button"></button>
+     <input type='hidden' name='section-id' value='<%= article.content[i]._id %>'/>
+     <textarea  id="content-<%= i %>" name="article[content][<%= i %>][content]" rows="8" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden"><%= article.content[i].content %></textarea><br/>
+
+  </fieldset>
+
+  <% } %>
+
+  <button id="submitNew" type="submit" name="button">Submit</button>
+  <input id="new-section" type="submit" value="Add a section">
+
+</form>
+<script src="/scripts/newArticle.js" type="text/javascript"></script>
+</div>
