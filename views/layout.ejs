@@ -10,17 +10,25 @@
   </head>
   <body>
     <header>
-      <ul id="header">
-        <li><h1>Leon's Wiki</h1></li>
-          <li><h5>Home</h5></li>
-          <li><h5>Favorites</h5></li>
-          <li><h5>Random Article</h5></li>
+      <ul>
+        <div id="headerBar">
+          <li><h5><a href="/">Home</a></h5></li>
+          <li><h5><a href="/">Favorites</a></h5></li>
+          <li><h5><a href="/">Random Article</a></h5></li>
+        </div>
       </ul>
+      <li><h1 id="header">Leon's Wiki</h1></li>
     </header>
     <div id="navBody">
       <nav>
         <ul id="nav">
-          <li><h1>Article List</h1></li>
+          <li><h4 id="articlesList">Article List:</h4></li>
+
+          <h6 id="articlesList">These are some of our articles:</h6>
+
+          <% articles.forEach(function (article) {%>
+            <li><a href="/articles/<%= article._id %>"><%= article.title%> by <%= article.author%></a></li>
+          <% })%>
 
         </ul>
       </nav>

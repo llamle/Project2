@@ -16,7 +16,14 @@ router.get('/', function (req, res) {
 
 // NEW
 router.get('/new', function (req, res) {
-  res.render('articles/new');
+  Article.find({}, function(err, foundArticles) {
+  if (err) {
+    console.log(err);
+  }else {
+    console.log(foundArticles);
+  res.render('articles/new', {articles : foundArticles});
+    };
+  });
 });
 
 // CREATE

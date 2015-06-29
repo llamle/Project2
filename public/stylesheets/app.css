@@ -2,17 +2,39 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  height 15%;
+  justify-content: center;
 }
 #nav{
   display: flex;
   flex-direction: column;
-  width: 25%;
-  height auto;
+  margin-right: 25px;
 }
 #navBody{
   display: flex;
+  margin-left: 15px;
 }
 li{
   list-style-type: none;
+}
+#submitNew:hover{
+  background-color: lightblue;
+}
+#new-section:hover{
+  background-color: lightblue;
+}
+#articlesList{
+  margin-bottom: 0;
+}
+#headerBar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+ul{
+  margin-bottom: 0;
+}
+h1{
+  margin-bottom: 0;
 }
