@@ -12,7 +12,7 @@ router.use(function (req, res, next) {
 
 // INDEX
 router.get('/', function (req, res) {
-  res.render('index.ejs');
+  res.render('index.ejs', { currentUser : req.session.currentUser });
 });
 
 // NEW

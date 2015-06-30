@@ -34,7 +34,7 @@ router.post('/login', function(req, res){
         } else {
           if (match) {
             req.session.currentUser = user.username;
-            res.redirect(301, '/articles');
+            res.redirect(301, '/welcome');
           } else {
             res.redirect(301, '/users/login');
           }

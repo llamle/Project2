@@ -8,7 +8,7 @@ $('#new-section').on('click', function () {
   var $newSection      = $('<fieldset>'),
       $newTitleLabel   = $('<label for="section0">Next Section Title:<br/></label>'),
       $newTitle        = $('<input name="article[content]['+ index +'][title]" type="text" size="30" placeholder="Whats this section about?"><br/>'),
-      $newButton       = $('<button id="removeSection-<%= i %>" class="delete-section" data-section-id="<%= article.content[i]._id %>" name="button">Delete Section</button><br/>')
+      $newButton       = $('<button id="removeSection-<%= i %>" class="delete-section" data-section-id="<%= article.content[i]._id %>" name="button">Delete Section</button><br/>'),
       $newContentLabel = $('<label for="content0">Next Section Content:<br/></label>'),
       $newContent      = $('<textarea name="article[content]['+ index +'][content]" type="text" rows="8" cols="40" placeholder="Tell me something cool!" onkeyup="textAreaAdjust(this)" style="overflow:hidden">');
 
@@ -42,8 +42,7 @@ $('.delete-section').on('click', function(e){
         $section.slideUp(function () {
           $section.remove();
         });
-
-        console.log(ajaxResonse.message);
+        console.log(ajaxResponse);
       };
     }
   });

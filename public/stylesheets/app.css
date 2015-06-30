@@ -11,14 +11,15 @@ header .logo {
   font-family: monospace;
   color: lightblue;
   background: grey;
-  padding: 0.25em 1.7em;
+  padding: 0.50em 1.7em;
   text-align: center;
 }
 
 header a {
-  padding: 0.25em 2em;
+  padding: 0.50em 2em;
   text-decoration: none;
   color: black;
+  margin-right: 3em;
 }
 
 header a:last-of-type {
@@ -27,7 +28,7 @@ header a:last-of-type {
 
 header a:hover {
   color: black;
-  background-color: white;
+  background-color: lightblue;
 }
 
 header li + li {
