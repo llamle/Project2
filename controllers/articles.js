@@ -18,7 +18,7 @@ router.use(function (req, res, next) {
 
 // INDEX
 router.get('/', function (req, res) {
-  res.render('articles/index');
+  res.render('index.ejs');
 });
 
 // NEW
@@ -54,26 +54,35 @@ router.delete('/:id/section/:sectionId', function (req, res) {
   console.log(req.params);
 
   Article.findById(req.params.id, function (err, article) {
-    article.content.remove(req.params.sectionId);
+    if (err) {
+      console.log(err);
+    } else {
+      article.content.remove(req.params.sectionId);
 
-    res.json({
-      success: true,
-      message: "Section has been removed!"
-    });
+      article.save(function (err, article) {
+        if (err) {
+          console.log(err);
+        } else {
+          res.json({
+            success: true,
+            message: "Section has been removed!"
+          });
+        };
+      });
+    };
   });
 });
 
 // DELETE
 router.delete('/:id', function (req, res) {
-  Article.remove({_id : req.params.id}, function(err, result){
-    if (err) {
+  Article.remove({_id : req.params.id}, function (err, result) {
+    if(err) {
       console.log(err);
     } else {
-      res.redirect(301, '');
+      res.redirect(301, '/articles');
     };
   });
 });
-
 // EDIT
 router.get('/:id/edit', function (req, res) {
   Article.findById(req.params.id, function(err, article){
