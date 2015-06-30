@@ -10,6 +10,7 @@ var express        = require('express'),
 
 // This sets the port to the process port or sets it to 3000
 var PORT = process.env.PORT || 3000;
+var MONGOURI = process.env.MONGOLAB_URI || 'mongodb://heroku_cc9vv0nm:7luf1is59g9lhp22pcnuni51cv@ds047612.mongolab.com:47612/heroku_cc9vv0nm';
 
 server.set('views', './views');
 server.set('view engine', 'ejs');
@@ -35,7 +36,7 @@ server.get('/', function (req, res) {
   res.render('index');
 });
 
-mongoose.connect('mongodb://localhost:27017/wiki');
+mongoose.connect(MONGOURI);
 var db = mongoose.connection;
 
 db.on('error', function () {
