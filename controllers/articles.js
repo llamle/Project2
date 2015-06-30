@@ -6,17 +6,6 @@ var express = require('express'),
 // prefetch articles middleware
 
 router.use(function (req, res, next) {
-  Article.find({}, function (err, articlesArray) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.locals.articles = articlesArray;
-      next();
-    };
-  });
-});
-
-router.use(function (req, res, next) {
   console.log(res.locals);
   next();
 })

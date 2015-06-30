@@ -29,6 +29,17 @@ server.use(expressLayouts);
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(methodOverride('_method'));
 
+server.use(function (req, res, next) {
+  Article.find({}, function (err, articlesArray) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.locals.articles = articlesArray;
+      next();
+    };
+  });
+});
+
 var articlesController = require('./controllers/articles.js');
 server.use('/articles', articlesController);
 
