@@ -29,8 +29,8 @@ server.use(expressLayouts);
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(methodOverride('_method'));
 
-var Article = require('../models/article.js').Article;
-var Section = require('../models/article.js').Section;
+var Article = require('./models/article.js').Article;
+var Section = require('./models/article.js').Section;
 
 server.use(function (req, res, next) {
   Article.find({}, function (err, articlesArray) {
