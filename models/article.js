@@ -13,7 +13,7 @@ var sectionSchema = Schema({
 });
 
 var articleSchema = Schema({
-    author: String,
+    author: { type : String, required : true },
     title: String,
     content: [sectionSchema]
 });

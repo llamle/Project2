@@ -5,8 +5,8 @@ var mongoose          = require('mongoose'),
 
 // Users Schema
 var UserSchema = new Schema({
-    username: { type : String, requird : true, index : { unique : true } },
-    password: { type : String, requird : true }
+    username: { type : String, required : true, index : { unique : true } },
+    password: { type : String, required : true }
 }, { collection : 'users' });
 
 // Password hashing middleware

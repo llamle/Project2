@@ -11,7 +11,7 @@ header .logo {
   font-family: monospace;
   color: lightblue;
   background: grey;
-  padding: 0.25em 1.39em;
+  padding: 0.25em 1.7em;
   text-align: center;
 }
 
@@ -41,6 +41,7 @@ header li + li {
   display: flex;
   flex-direction: column;
   padding-left: 15px;
+  padding-right: 15px;
   margin-right: 25px;
   flex-shrink: 0;
   flex-basis: 210px;

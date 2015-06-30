@@ -29,10 +29,14 @@ server.use(expressLayouts);
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(methodOverride('_method'));
 
+User    = require('./models/user.js');
+
 var Article = require('./models/article.js').Article;
 var Section = require('./models/article.js').Section;
 
 server.use(function (req, res, next) {
+  console.log(req.session);
+
   Article.find({}, function (err, articlesArray) {
     if (err) {
       console.log(err);
@@ -54,10 +58,10 @@ var usersController = require('./controllers/users.js');
 server.use('/users', usersController);
 
 server.get('/welcome', function(req, res){
+  res.locals.currentUser = req.session.currentUser;
+  console.log(res.locals);
   if (req.session.currentUser) {
-    res.render('welcome', {
-      currentUser: req.session.currentUser
-    });
+    res.render('welcome');
   } else {
     res.redirect('/users/login ')
   }

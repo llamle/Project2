@@ -4,6 +4,9 @@
 
 <form class="newForm" action="/articles" method="post">
 
+  <label for="title">Author</label>
+  <input type="text" name="article[author]" id="title" size="30" placeholder="<%=currentUser%>" value="<%=currentUser%>" readonly><br/>
+
   <label for="title">Article Title:</label>
   <input type="text" name="article[title]" id="title" size="30" placeholder="What's your article about?"><br/>
 

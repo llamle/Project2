@@ -17,12 +17,13 @@ router.get('/', function (req, res) {
 
 // NEW
 router.get('/new', function (req, res) {
-  res.render('articles/new');
+  res.render('articles/new', { currentUser : req.session.currentUser });
 });
 
 // CREATE
 router.post('/', function (req, res) {
-  req.body.author = req.session.userName;
+  console.log(req.body.author);
+  req.body.author = req.session.currentUser;
 
   var newArticle = new Article(req.body.article);
   newArticle.save(function (err, article) {
