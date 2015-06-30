@@ -14,7 +14,7 @@ router.use(function (req, res, next) {
       next();
     };
   });
-})
+});
 
 // INDEX
 router.get('/', function (req, res) {
