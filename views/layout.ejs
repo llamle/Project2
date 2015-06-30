@@ -26,7 +26,7 @@
 
           <h6 id="articlesList">These are some of our articles:</h6>
 
-          <% if(articles){ %>
+          <% if(articles.length > 0){ %>
             <% articles.forEach(function (article) {%>
               <li><a href="/articles/<%= article._id %>"><%= article.title%></a> by <%= article.author%></li><br/>
             <% })%>

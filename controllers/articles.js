@@ -16,6 +16,11 @@ router.use(function (req, res, next) {
   });
 });
 
+router.use(function (req, res, next) {
+  console.log(res.locals);
+  next();
+})
+
 // INDEX
 router.get('/', function (req, res) {
   res.render('index.ejs');
