@@ -1,9 +1,15 @@
 var mongoose = require('mongoose'),
     Schema   = mongoose.Schema;
 
+var commentSchema = Schema({
+    author: String,
+    content: String,
+});
+
 var sectionSchema = Schema({
     title: String,
-    content: String
+    content: String,
+    comments: [commentSchema]
 });
 
 var articleSchema = Schema({

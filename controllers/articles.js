@@ -22,6 +22,8 @@ router.get('/new', function (req, res) {
 
 // CREATE
 router.post('/', function (req, res) {
+  req.body.author = req.session.userName;
+
   var newArticle = new Article(req.body.article);
   newArticle.save(function (err, article) {
     if (err) {
