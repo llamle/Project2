@@ -50,6 +50,19 @@ server.get('/', function (req, res) {
   res.render('index');
 });
 
+var usersController = require('./controllers/users.js');
+server.use('/users', usersController);
+
+server.get('/welcome', function(req, res){
+  if (req.session.currentUser) {
+    res.render('welcome', {
+      currentUser: req.session.currentUser
+    });
+  } else {
+    res.redirect('/users/login ')
+  }
+});
+
 mongoose.connect(MONGOURI);
 var db = mongoose.connection;
 

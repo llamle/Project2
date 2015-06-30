@@ -1,8 +1,34 @@
-var mongoose = require('mongoose'),
-    Schema   = mongoose.Schema;
+var mongoose          = require('mongoose'),
+    Schema            = mongoose.Schema
+    bcrypt            = require('bcrypt'),
+    SALT_WORK_FACTOR  = 10;
 
-var userSchema = Schema({
+// Users Schema
+var UserSchema = new Schema({
+    username: { type : String, requird : true, index : { unique : true } },
+    password: { type : String, requird : true }
+}, { collection : 'users' });
 
+// Password hashing middleware
+UserSchema.pre('save', function(next){
+  var user = this;
+  if (!user.isModified('password')) return next();
+  bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt){
+    if (err) return next(err);
+    bcrypt.hash(user.password, salt, function(err, hash){
+      if (err) return next(err)
+        user.password = hash
+        next();
+    });
+  });
 });
 
-var User = mongoose.model()
+// Password verification
+UserSchema.methods.comparePassword = function(candidatePassword, cb){
+  bcrypt.compare(candidatePassword, this.password, function(err, isMatch){
+    if (err) return cb(err);
+    cb(null, isMatch);
+  });
+};
+
+module.exports = mongoose.model('Users', UserSchema);
