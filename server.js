@@ -8,6 +8,9 @@ var express        = require('express'),
     morgan         = require('morgan'),
     mongoose       = require('mongoose');
 
+// This sets the port to the process port or sets it to 3000
+var PORT = process.env.PORT || 3000;
+
 server.set('views', './views');
 server.set('view engine', 'ejs');
 
@@ -41,7 +44,7 @@ db.on('error', function () {
 
 db.once('open', function () {
   console.log("Database UP AND RUNNING!");
-  server.listen(3000, function () {
+  server.listen(PORT, function () {
     console.log("Server UP AND RUNNING!");
   });
 });
