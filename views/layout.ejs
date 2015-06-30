@@ -30,7 +30,7 @@
           <% articles.forEach(function (article) {%>
             <li><a href="/articles/<%= article._id %>"><%= article.title%></a> by <%= article.author%></li><br/>
           <% })%>
-          <% } else { <li>No Articles to show.</li> } %>
+          <% } else { <li>No Articles to show.</li> }; %>
 
         </ul>
       </nav>
