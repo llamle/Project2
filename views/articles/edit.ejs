@@ -6,7 +6,7 @@
     <input type="submit" value="Delete Article">
 </form>
 
-<form class="newForm" action="/articles?_method=PATCH" method="post">
+<form class="newForm" action="/articles/<%= article._id %>?_method=PATCH" method="POST">
   <label for="author">Author:</label>
   <input type="text" name="article[author]" id="author" size="30" value="<%= article.author %>"><br/>
 

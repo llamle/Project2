@@ -82,13 +82,18 @@ router.delete('/:id', function (req, res) {
 });
 // EDIT
 router.get('/:id/edit', function (req, res) {
-  Article.findById(req.params.id, function(err, article){
-    if (err) {
-      console.log(err);
-    } else {
-      res.render('articles/edit', {article : article});
-    };
-  });
+  if(req.session.currentUser) {
+    Article.findById(req.params.id, function (err, article) {
+        if (err) {
+          console.log(err);
+        } else {
+          article.user = req.session.currentUser;
+          res.render('articles/edit', {article : article});
+      };
+    });
+  } else {
+    res.redirect(301, '/welcome');
+  };
 });
 
 // UPDATE
@@ -97,7 +102,7 @@ router.patch('/:id', function (req, res) {
     if (err) {
       console.log(err);
     } else {
-      res.redirect(301, '/article/'+ req.params.id);
+      res.redirect(301, '/articles/'+ req.params.id);
     };
   });
 });
