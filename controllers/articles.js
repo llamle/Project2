@@ -76,7 +76,7 @@ router.delete('/:id', function (req, res) {
     if(err) {
       console.log(err);
     } else {
-      res.redirect(301, '/articles');
+      res.redirect(301, '/welcome');
     };
   });
 });

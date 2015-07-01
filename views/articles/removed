@@ -1,0 +1,4 @@
+<br/>
+<h3>Hi <%= currentUser %>, we've removed that file!</h3><br/>
+
+<h5>We currently have <%= articles.length %> articles on our site. What else would you like to do?</h5><br/>
